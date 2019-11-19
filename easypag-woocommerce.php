@@ -49,6 +49,9 @@ class WC_EasyPag {
 
 			// Admin includes.
 			if ( is_admin() ) {
+
+				add_action('admin_notices', array(__CLASS__, 'ecfb_missing_notice'));
+
 				$this->admin_includes();
 			}
 
@@ -69,6 +72,12 @@ class WC_EasyPag {
 			
 		} else {
 			add_action( 'admin_notices', array( $this, 'woocommerce_missing_notice' ) );
+		}
+	}
+
+	public static function ecfb_missing_notice() {
+		if ( ! class_exists( 'Extra_Checkout_Fields_For_Brazil') ) {
+			include dirname(__FILE__) . '/includes/views/html-notice-missing-ecfb.php';
 		}
 	}
 

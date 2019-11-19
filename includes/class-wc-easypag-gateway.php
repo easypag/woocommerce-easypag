@@ -29,7 +29,7 @@ if (!class_exists('WC_EasyPag_Gateway'))
 				$this->token = null;
 			}
 
-			add_action('woocommerce_thankyou_easypag', array($this, 'thankyou_page'));
+			add_action('woocommerce_thankyou_' . $this->id , array($this, 'thankyou_page'));
 			add_action('woocommerce_email_after_order_table', array($this, 'email_instructions'), 10, 2);
 			add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
 			add_action('woocommerce_order_status_cancelled', array($this, 'send_mail'));
@@ -68,7 +68,7 @@ if (!class_exists('WC_EasyPag_Gateway'))
 
 			$this->form_fields = array(
 				'enabled' => array(
-					'title'   => __('Habulitar/Desabilitar', 'easypag'),
+					'title'   => __('Habilitar/Desabilitar', 'easypag'),
 					'type'    => 'checkbox',
 					'label'   => __('Habilitar EasyPag Geteway', 'easypag'),
 					'default' => 'yes'
@@ -158,10 +158,9 @@ if (!class_exists('WC_EasyPag_Gateway'))
 			}
 		}
 
-		public function thankyou_page()
+		public function thankyou_page( $order_id )
 		{
-			$order_id = wc_get_order_id_by_order_key((string) sanitize_text_field($_GET['key']));
-			$order    = new WC_Order($order_id);
+			$order    = new WC_Order((int) $order_id);
 			$payload  = json_decode(get_post_meta($order->id, 'wc_easypag_boleto_data')[0],true);
 
 			$html = '<div class="woocommerce-message">';
