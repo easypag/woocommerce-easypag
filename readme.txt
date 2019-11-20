@@ -1,7 +1,7 @@
 === Plugin Name ===
-Contributors: carlos.albertocruz
-Donate link: http://example.com/
-Tags: woocommerce, gateway, easypag, easypagamento, boleto
+Contributors: EasyPag
+Donate link: https://easypag.com.br/
+Tags: woocommerce, gateway, easypag, easypagamentos, boleto
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.6

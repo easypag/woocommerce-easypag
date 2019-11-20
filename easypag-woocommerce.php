@@ -2,8 +2,8 @@
 /**
  * Plugin Name: EasyPag WooCommerce
  * Description: WooCommerce Boleto is a brazilian payment gateway for WooCommerce
- * Author: Carlos Alberto
- * Author URI: https://ccwebmaster.com
+ * Author: EasyPag
+ * Author URI: https://easypag.com.br
  * Version: 1.0.0
  * License: GPLv2 or later
  * Text Domain: easy
